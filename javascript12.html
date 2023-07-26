@@ -12,6 +12,7 @@
     #watch { font-family: "digital1", sans-serif; display:block; 
     padding: 10px; background-color: #333; color:#fff; font-size:60px; 
     width:280px; margin:28px; } 
+    
     #wrap { clear:both; width:400px; margin:10px auto; height:140px;
          box-shadow:2px 2px 1px #333;}
     </style>
@@ -35,19 +36,23 @@
             ampm = "AM";
             hh = hour;
         }
+
         if(hh<=9){
             hh = "0" + hh;
         }
+
         if(minute<=9){
             mm = "0" + minute;
         } else {
             mm = minute;
         }
+
         if(second<=9){
             ss = "0" + second;
         } else {
             ss = second;
         }
+        
         watch.innerHTML = ampm + " " + hh + ":" + mm + ":" + ss;
     }    
     tt();

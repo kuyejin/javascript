@@ -5,12 +5,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>자바스크립트 응용01 - 계산기</title>
+
+    <style>
+
+table{
+    width:100%;
+}
+.cal_wrap {
+  margin: 0 auto;
+  width: 180px;
+  border: 1px solid #ccc;
+  background-color: rgb(87, 126, 126);
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+#display {
+  width: 90%;
+  margin-bottom: 10px;
+  padding: 5px;
+  font-size: 20px;
+  text-align: right;
+  box-shadow: inset 0px 0px 10px hsl(0, 1%, 56%);
+}
+
+ button {
+  width: 39px;
+  height: 39px;
+  margin: 1px;
+  font-size: 16px;
+  border-radius: 5px;
+  color: #ccc;
+  background-color: #14342f;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+#clear{
+  width: 170px;
+  height: 39px;
+  margin: 1px;
+  font-size: 16px;
+  border-radius: 5px;
+  color: #ccc;
+  background-color: #14342f;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+
+    </style>
 </head>
 <body>
     <div id="calculator">
         <div class="cal_wrap">
             <input type="text" id="display">
-            <table>
+            <table id = "dd">
+
+                <tr>
+                    <td colspan="4">
+                        <button id="clear" onclick="cl()">CLEAR</button>
+                    </td>
+                </tr>    
+
                 <tr>
                     <td><button id="btn7" onclick="cal(7)">7</button></td>
                     <td><button id="btn8" onclick="cal(8)">8</button></td>
@@ -39,12 +98,22 @@
         </div>
     </div>
     <script>
-    var display = document.getElementById("display");
+
+
+     var display = document.getElementById("display");
+    var i = display.value;
+    
     function cal(btn){
         display.value = display.value + btn;
-    }    
-    function rt(){ //eval()
-        display.value = "";
+        i = display.value;
+    }
+    function rt(){ //eval() : 문자열로 구성된 계산식을 실제 계산 가능한 구조로 변경
+       display.value = eval(i);
+    }
+
+    function cl(){ //초기화
+       display.value = "";
+       display.focus();
     }
     </script>
 </body>
